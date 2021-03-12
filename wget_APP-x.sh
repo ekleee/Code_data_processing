@@ -1,0 +1,25 @@
+#!/bin/bash
+
+SIT_URL="https://www.ncei.noaa.gov/data/avhrr-polar-pathfinder-extended/access/nhem/"
+SIT_URL_ADD="/Polar-APP-X_v01r01_Nhem_1400_d"
+SIT_FILE_ADD="_c20151221.nc"
+#SIT_FILE_ADD="_c20151222.nc"
+SIT_YEAR=(1982 1983 1984 1985 1986 1987 1988 1989 1990) # 1991 1992 1993 1994 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015 2016 2017 2018)
+#SIT_YEAR=(1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014) # 2015 2016 2017 2018)
+SIT_MONTH=(01 02 03 04 05 06 07 08 09 10 11 12)
+SIT_DAY=(01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31)
+
+
+for yy in ${SIT_YEAR[@]} # YEAR LOOP
+do
+
+  for mm in ${SIT_MONTH[@]} # MONTH LOOP
+  do
+    for dd in ${SIT_DAY[@]} # DAY LOOP
+    do
+      wget ${SIT_URL}${yy}${SIT_URL_ADD}${yy}${mm}${dd}${SIT_FILE_ADD} --no-check-certificate -nc
+      
+      
+    done # DAY LOOP
+  done # MONTH LOOP
+done # YEAR LOOP
